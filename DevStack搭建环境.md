@@ -39,7 +39,7 @@
 	index-url = http://pypi.douban.com/simple/
 	trusted-host = pypi.douban.com
 	disable-pip-version-check = true
-	```	
+    ```	
 > 如果pip源中缺少devstack需要安装的符合版本要求的库文件，需要先补充pip源
 > 大部分库文件都在操作系统安装时，自带的python库中安装好，有些特殊的库文件及版本要求，参考/home/stack/requirements/upper-constraints.txt文件
 
@@ -48,60 +48,57 @@
   该配置为模板，环境迁移需要修改，具体修改哪些，请参照
   http://docs.openstack.org/developer/devstack/configuration.html#local-conf
     ```
-[[local|localrc]]
-DEST=/home/stack
-HOST_IP=172.17.140.140
-SERVICE_HOST=172.17.140.141
-MYSQL_HOST=172.17.140.141
-RABBIT_HOST=172.17.140.141
-GLANCE_HOSTPORT=172.17.140.141:9292
-GIT_BASE=https://github.com
-
-    # Logging
-LOGDAYS=1
-LOG_COLOR=False
-LOGDIR=$DEST/logs
-LOGFILE=$DEST/logs/stack.sh.log
-VERBOSE=True
-SCREEN_LOGDIR=$DEST/logs/screen
-
-	# Credentials
-ADMIN_PASSWORD=devstack
-DATABASE_PASSWORD=$ADMIN_PASSWORD
-RABBIT_PASSWORD=$ADMIN_PASSWORD
-SERVICE_PASSWORD=$ADMIN_PASSWORD
-SERVICE_TOKEN=$ADMIN_PASSWORD
+	[[local|localrc]]
+	DEST=/home/stack
+	HOST_IP=172.17.140.140
+	SERVICE_HOST=172.17.140.141
+	MYSQL_HOST=172.17.140.141
+	RABBIT_HOST=172.17.140.141
+	GLANCE_HOSTPORT=172.17.140.141:9292
+	GIT_BASE=https://github.com
 	
+	# Logging
+	LOGDAYS=1
+	LOG_COLOR=False
+	LOGDIR=$DEST/logs
+	LOGFILE=$DEST/logs/stack.sh.log
+	VERBOSE=True
+	SCREEN_LOGDIR=$DEST/logs/screen
+	
+	# Credentials
+	ADMIN_PASSWORD=devstack
+	DATABASE_PASSWORD=$ADMIN_PASSWORD
+	RABBIT_PASSWORD=$ADMIN_PASSWORD
+	SERVICE_PASSWORD=$ADMIN_PASSWORD
+	SERVICE_TOKEN=$ADMIN_PASSWORD
+		
 	#Disable and enable service
-DISABLED_SERVICES=n-net
-   
-    # Enable Neutron - Service
-ENABLED_SERVICES+=,neutron,q-svc,q-agt,q-dhcp,q-l3,q-meta,q-metering,q-vpn,q-lbaas
+	DISABLED_SERVICES=n-net
+	   
+	# Enable Neutron - Service
+	ENABLED_SERVICES+=,neutron,q-svc,q-agt,q-dhcp,q-l3,q-meta,q-metering,q-vpn,q-lbaas
 	# Neutron options
-Q_USE_SECGROUP=True
-FLOATING_RANGE="172.17.140.0/24"
-FIXED_RANGE="10.0.0.0/24"
-Q_FLOATING_ALLOCATION_POOL=start=172.17.140.198,end=172.17.140.202
-PUBLIC_NETWORK_GATEWAY="172.17.140.1"
-Q_L3_ENABLED=True
-PUBLIC_INTERFACE=eth0
+	Q_USE_SECGROUP=True
+	FLOATING_RANGE="172.17.140.0/24"
+	FIXED_RANGE="10.0.0.0/24"
+	Q_FLOATING_ALLOCATION_POOL=start=172.17.140.198,end=172.17.140.202
+	PUBLIC_NETWORK_GATEWAY="172.17.140.1"
+	Q_L3_ENABLED=True
+	PUBLIC_INTERFACE=eth0
 	# Open vSwitch provider networking configuration
-Q_USE_PROVIDERNET_FOR_PUBLIC=True
-OVS_PHYSICAL_BRIDGE=br-ex
-PUBLIC_BRIDGE=br-ex
-OVS_BRIDGE_MAPPINGS=public:br-ex
-    
-    # Enable Heat Service
-ENABLED_SERVICES+=,heat,h-api,h-api-cfn,h-api-cw,h-eng
-    
-    # Enable Swift services
-ENABLED_SERVICES+=,swift,s-proxy,s-object,s-container,s-account
-SWIFT_HASH=66a3d6b56c1f479c8b4e70ab5c2000f5
-SWIFT_REPLICAS=1
-    
-    # Enable Ceilometer Service (metering + alarming)
-ENABLED_SERVICES+=,ceilometer-acompute,ceilometer-acentral,ceilometer-collector,ceilometer-api
-ENABLED_SERVICES+=,ceilometer-alarm-notify,ceilometer-alarm-eval
+	Q_USE_PROVIDERNET_FOR_PUBLIC=True
+	OVS_PHYSICAL_BRIDGE=br-ex
+	PUBLIC_BRIDGE=br-ex
+	OVS_BRIDGE_MAPPINGS=public:br-ex
+	# Enable Heat Service
+	ENABLED_SERVICES+=,heat,h-api,h-api-cfn,h-api-cw,h-eng
+	# Enable Swift services
+	ENABLED_SERVICES+=,swift,s-proxy,s-object,s-container,s-account
+	SWIFT_HASH=66a3d6b56c1f479c8b4e70ab5c2000f5
+	SWIFT_REPLICAS=1
+	# Enable Ceilometer Service (metering + alarming)
+	ENABLED_SERVICES+=,ceilometer-acompute,ceilometer-acentral,ceilometer-collector,ceilometer-api
+	ENABLED_SERVICES+=,ceilometer-alarm-notify,ceilometer-alarm-eval
     
     ```
 	
