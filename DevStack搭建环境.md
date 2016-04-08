@@ -47,7 +47,7 @@
 > 在/home/stack/devstack目录下，创建local.conf文件，增加以下配置。
   该配置为模板，环境迁移需要修改，具体修改哪些，请参照
   http://docs.openstack.org/developer/devstack/configuration.html#local-conf
-    ```
+    ```shell
 	[[local|localrc]]
 	DEST=/home/stack
 	HOST_IP=172.17.140.140
